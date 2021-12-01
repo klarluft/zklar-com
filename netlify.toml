@@ -1,2 +1,4 @@
 [build]
   base = "frontend/"
+[functions]
+  directory = "../netlify/functions/"
