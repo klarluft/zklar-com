@@ -13,6 +13,7 @@
     "@netlify/functions": "^0.10.0"
   },
   "devDependencies": {
+    "@types/node": "^16.11.11",
     "typescript": "^4.5.2"
   }
 }

@@ -4,7 +4,7 @@
   },
   "eslint.workingDirectories": [
     "frontend",
-    "netlify"
+    "netlify/functions"
   ],
   "cSpell.words": [
     "MAILCHIMP"
