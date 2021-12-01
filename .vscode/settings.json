@@ -1,0 +1,12 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.workingDirectories": [
+    "frontend",
+    "netlify"
+  ],
+  "cSpell.words": [
+    "MAILCHIMP"
+  ]
+}
