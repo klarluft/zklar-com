@@ -1,6 +1,6 @@
 [build]
   base = "frontend/"
+  command = "next build && next export && cd ../netlify/functions && npm run install"
+  publish = "frontend/out"
 [functions]
   directory = "../netlify/functions/"
-[[plugins]]
-  package = "@netlify/plugin-functions-install-core"
