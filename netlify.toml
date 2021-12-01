@@ -1,6 +1,6 @@
 [build]
   base = "frontend/"
-  command = "next build && next export && cd ../netlify/functions && npm install && cd ../frontend"
+  command = "next build && next export && cd ../netlify/functions && npm install && cd ../../frontend"
   publish = "frontend/out"
 [functions]
   directory = "../netlify/functions/"
