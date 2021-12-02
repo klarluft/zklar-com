@@ -1,5 +1,6 @@
 import { darken, transparentize } from "polished";
 import React, { memo, useCallback, useRef, useState } from "react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import styled, { css } from "styled-components";
 import { flickeringAnimation } from "../../styles/flickering-animation";
 
@@ -79,29 +80,41 @@ const Form = styled.form``;
 export const NewsletterForm = memo(function NewsletterForm() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [state, setState] = useState<State>("start");
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
-  const handleSubmit = useCallback(async (event) => {
-    event.preventDefault();
-    const email = inputRef.current?.value;
+  const handleSubmit = useCallback(
+    async (event) => {
+      event.preventDefault();
+      const email = inputRef.current?.value;
+      if (!executeRecaptcha) {
+        console.log("Execute recaptcha not yet available");
+        return;
+      }
 
-    if (!email) return;
+      if (!email) return;
 
-    setState("loading");
+      const recaptchaToken = await executeRecaptcha("subscribe");
 
-    const response = await fetch("/.netlify/functions/subscribe", {
-      method: "post",
-      body: JSON.stringify({ email }),
-    });
-    const data = await response.json();
-    console.log("data", data);
+      setState("loading");
 
-    if (inputRef.current) {
-      inputRef.current.type = "text";
-      inputRef.current.value = "Congrats for joining our newsletter!";
-    }
+      try {
+        await fetch("/.netlify/functions/subscribe", {
+          method: "post",
+          body: JSON.stringify({ email, recaptchaToken }),
+        });
+      } catch (error) {
+        console.error(error);
+      }
 
-    setState("subscribed");
-  }, []);
+      if (inputRef.current) {
+        inputRef.current.type = "text";
+        inputRef.current.value = "Congrats for joining our newsletter!";
+      }
+
+      setState("subscribed");
+    },
+    [executeRecaptcha]
+  );
 
   return (
     <Form onSubmit={handleSubmit}>
