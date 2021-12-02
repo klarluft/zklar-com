@@ -1,9 +1,11 @@
 import { Handler } from "@netlify/functions";
 
-const mailchimp = require('@mailchimp/mailchimp_marketing');
+const mailchimp = require("@mailchimp/mailchimp_marketing");
 
 const MAILCHIMP_API_KEY = process.env.MAILCHIMP_API_KEY;
 const MAILCHIMP_SERVER = process.env.MAILCHIMP_SERVER;
+
+console.log(1);
 
 mailchimp.setConfig({
   apiKey: MAILCHIMP_API_KEY,
