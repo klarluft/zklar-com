@@ -40,7 +40,7 @@ export const Header = () => (
           <StyledLogoIcon />
         </LogoWrapper>
       </Link>
-      {!Number.isNaN(1) ? (
+      {Number.isNaN(1) ? (
         <Link href="/contact" passHref={true}>
           <ContactLink>Contact</ContactLink>
         </Link>

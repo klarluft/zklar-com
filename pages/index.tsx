@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { Homepage } from "../components/homepage";
@@ -11,6 +12,9 @@ export default function IndexPage() {
     <ThemeProvider theme={theme}>
       <GoogleReCaptchaProvider reCaptchaKey={RE_CAPTCHA_KEY}>
         <>
+          <Head>
+            <title>ZKlar - Private, fast and cheap Ethereum transactions</title>
+          </Head>
           <GlobalStyle />
           <Homepage />
         </>
