@@ -9,7 +9,8 @@ export const theme: DefaultTheme = {
     placeholder: "#9F9F9F",
     successGreen: "#00ba00",
   },
-  sizes: {
+  size: {
     pageMaxWidthPx: 1200,
+    footerHeightPx: 120,
   },
 };

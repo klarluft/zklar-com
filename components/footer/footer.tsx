@@ -6,6 +6,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import React from "react";
 import styled from "styled-components";
+import { mediaTabletPortrait } from "../../styles/media-queries";
 
 const decodeBase64 = (input: string) => Buffer.from(input, "base64").toString();
 
@@ -19,31 +20,47 @@ const addressLine4 = "VGhlIE5ldGhlcmxhbmRz";
 
 const Icons = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 24px;
-  margin-left: auto;
-  margin-right: 56px;
   color: white;
   font-size: 26px;
+  min-height: 120px;
 
   > a:hover {
     color: ${({ theme }) => theme.color.accent};
   }
+
+  @media ${mediaTabletPortrait} {
+    order: 2;
+    margin-left: auto;
+    margin-right: 56px;
+    min-height: unset;
+  }
 `;
-const RightSideLine = styled.div``;
-const RightSide = styled.div`
+const AddressLine = styled.div``;
+const Address = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   font-size: 14px;
   color: white;
   line-height: 1.2;
+  text-align: center;
+  height: 120px;
 
-  > ${RightSideLine}:first-child {
+  > ${AddressLine}:first-child {
     font-weight: 700;
     margin-bottom: 8px;
+    height: unset;
+  }
+
+  @media ${mediaTabletPortrait} {
+    order: 3;
+    text-align: left;
   }
 `;
-const LeftSideLine = styled.div`
+const MadeByLine = styled.div`
   > a {
     font-weight: 700;
 
@@ -53,21 +70,34 @@ const LeftSideLine = styled.div`
     }
   }
 `;
-const LeftSide = styled.div`
+const MadeBy = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
   justify-content: center;
   font-size: 14px;
   color: white;
+  height: 120px;
+  text-align: center;
+
+  @media ${mediaTabletPortrait} {
+    order: 1;
+    height: unset;
+    text-align: left;
+  }
 `;
 const ContainerInner = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: ${({ theme }) => theme.sizes.pageMaxWidthPx}px;
-  height: 120px;
+  max-width: ${({ theme }) => theme.size.pageMaxWidthPx}px;
   padding: 0 24px;
+
+  @media ${mediaTabletPortrait} {
+    flex-direction: row;
+    height: ${({ theme }) => theme.size.footerHeightPx}px;
+  }
 `;
 const Container = styled.footer`
   display: flex;
@@ -79,21 +109,6 @@ const Container = styled.footer`
 export const Footer = () => (
   <Container>
     <ContainerInner>
-      <LeftSide>
-        <LeftSideLine>
-          Made with ❤️ by{" "}
-          <a
-            href={decodeBase64(parentCompanyUrl)}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {decodeBase64(parentCompanyName)}
-          </a>
-        </LeftSideLine>
-        <LeftSideLine>
-          <a href={`mailto:${email}`}>{decodeBase64(email)}</a>
-        </LeftSideLine>
-      </LeftSide>
       <Icons>
         <a href="https://t.me/zklarcom" target="_blank" rel="noreferrer">
           <FontAwesomeIcon icon={faTelegram} />
@@ -106,12 +121,27 @@ export const Footer = () => (
           <FontAwesomeIcon icon={faGithub} />
         </a>
       </Icons>
-      <RightSide>
-        <RightSideLine>{decodeBase64(addressLine1)}</RightSideLine>
-        <RightSideLine>{decodeBase64(addressLine2)}</RightSideLine>
-        <RightSideLine>{decodeBase64(addressLine3)}</RightSideLine>
-        <RightSideLine>{decodeBase64(addressLine4)}</RightSideLine>
-      </RightSide>
+      <Address>
+        <AddressLine>{decodeBase64(addressLine1)}</AddressLine>
+        <AddressLine>{decodeBase64(addressLine2)}</AddressLine>
+        <AddressLine>{decodeBase64(addressLine3)}</AddressLine>
+        <AddressLine>{decodeBase64(addressLine4)}</AddressLine>
+      </Address>
+      <MadeBy>
+        <MadeByLine>
+          Made with ❤️ by{" "}
+          <a
+            href={decodeBase64(parentCompanyUrl)}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {decodeBase64(parentCompanyName)}
+          </a>
+        </MadeByLine>
+        <MadeByLine>
+          <a href={`mailto:${email}`}>{decodeBase64(email)}</a>
+        </MadeByLine>
+      </MadeBy>
     </ContainerInner>
   </Container>
 );

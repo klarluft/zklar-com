@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { googleRecaptchaCss } from "./google-recaptcha-css";
 import { normalizeCss } from "./normalize-css";
 
 export const GlobalStyle = createGlobalStyle`
@@ -22,4 +23,6 @@ export const GlobalStyle = createGlobalStyle`
     color: inherit;
     text-decoration: inherit;
   }
+
+  ${googleRecaptchaCss};
 `;

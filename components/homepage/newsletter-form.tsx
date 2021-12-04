@@ -3,11 +3,13 @@ import React, { memo, useCallback, useRef, useState } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import styled, { css } from "styled-components";
 import { flickeringAnimation } from "../../styles/flickering-animation";
+import { mediaTabletPortrait } from "../../styles/media-queries";
 
 type State = "start" | "loading" | "subscribed";
 
-const FIELD_WIDTH_PX = 496;
-const FIELD_HEIGHT_PX = 60;
+const FIELD_WIDTH_TABLET_PX = 496;
+const FIELD_HEIGHT_PX = 50;
+const FIELD_HEIGHT_TABLET_PX = 60;
 
 const Button = styled.button<{ $isLoading: boolean }>`
   display: flex;
@@ -17,11 +19,16 @@ const Button = styled.button<{ $isLoading: boolean }>`
   flex-grow: 0;
   height: ${FIELD_HEIGHT_PX}px;
   background-color: ${({ theme }) => theme.color.accent};
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 700;
   padding: 0 14px;
   border: none;
   color: white;
+
+  @media ${mediaTabletPortrait} {
+    height: ${FIELD_HEIGHT_TABLET_PX}px;
+    font-size: 24px;
+  }
 
   > span {
     animation: ${({ $isLoading }) =>
@@ -42,6 +49,12 @@ const Input = styled.input`
   height: ${FIELD_HEIGHT_PX}px;
   border: none;
   padding: 0 14px;
+  font-size: 16px;
+
+  @media ${mediaTabletPortrait} {
+    height: ${FIELD_HEIGHT_TABLET_PX}px;
+    font-size: 24px;
+  }
 
   &:focus {
     outline: none;
@@ -50,10 +63,14 @@ const Input = styled.input`
 `;
 const Field = styled.div<{ $state: State }>`
   display: flex;
-  width: ${FIELD_WIDTH_PX}px;
+  width: 100%;
   box-shadow: 0px 4px 24px -4px ${({ theme, $state }) => ($state === "subscribed" ? transparentize(0.6, darken(0.1, theme.color.successGreen)) : transparentize(0.75, "#000000"))};
   border-radius: 8px;
   overflow: hidden;
+
+  @media ${mediaTabletPortrait} {
+    width: ${FIELD_WIDTH_TABLET_PX}px;
+  }
 
   &:focus-within {
     outline: 2px solid

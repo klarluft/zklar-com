@@ -4,6 +4,7 @@ import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { Homepage } from "../components/homepage";
 import { GlobalStyle } from "../styles/global-style";
 import { theme } from "../styles/theme";
+import { CookieBanner } from "../components/cookie-banner";
 
 const RE_CAPTCHA_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_KEY;
 
@@ -17,6 +18,7 @@ export default function IndexPage() {
           </Head>
           <GlobalStyle />
           <Homepage />
+          <CookieBanner />
         </>
       </GoogleReCaptchaProvider>
     </ThemeProvider>

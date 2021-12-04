@@ -10,8 +10,9 @@ declare module "styled-components" {
       placeholder: string;
       successGreen: string;
     };
-    sizes: {
+    size: {
       pageMaxWidthPx: number;
+      footerHeightPx: number;
     };
   }
 }
