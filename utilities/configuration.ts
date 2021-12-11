@@ -6,3 +6,5 @@ export const COMPANY_DOMAIN = "klarluft.com";
 export const COMPANY_REGISTERED_IN = `The Netherlands in The Chamber of Commerce (KVK) with a number "84136456"`;
 export const PRIVACY_POLICY_LINK = "/privacy-policy";
 export const TERMS_OF_SERVICE_LINK = "/terms-of-service";
+
+export const GA_ANALYTICS_MEASUREMENT_ID = "G-DDPF7TF44K";
