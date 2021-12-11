@@ -1,4 +1,4 @@
-# [ZKlar.com](https://zklar.com)
+# [zKlar.com](https://zklar.com)
 
 **Private, fast and cheap Ethereum transactions**
 

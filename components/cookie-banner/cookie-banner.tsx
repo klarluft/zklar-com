@@ -5,6 +5,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useLocalStorage } from "../../utilities/use-local-storage";
 import { mediaTabletPortrait } from "../../styles/media-queries";
+import { PRIVACY_POLICY_LINK } from "../../utilities/configuration";
 
 const CONTAINER_WIDTH_PX = 640;
 const CONTAINER_HEIGHT_PX = 126;
@@ -127,7 +128,7 @@ export const CookieBanner = () => {
         <span>
           To make this website work, we use cookies. By using it, you agree to
           our{" "}
-          <Link href="/privacy-policy" passHref={true}>
+          <Link href={PRIVACY_POLICY_LINK} passHref={true}>
             <a>Privacy Policy</a>
           </Link>
           , including cookie policy.

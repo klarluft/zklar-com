@@ -1,3 +1,4 @@
+import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import styled from "styled-components";
 import { mediaTabletPortrait } from "../../styles/media-queries";
 import { Footer } from "../footer";
@@ -17,12 +18,16 @@ const Container = styled.div`
   }
 `;
 
+const RE_CAPTCHA_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_KEY;
+
 export const Homepage = () => {
   return (
-    <Container>
-      <Header />
-      <NewsletterBanner />
-      <Footer />
-    </Container>
+    <GoogleReCaptchaProvider reCaptchaKey={RE_CAPTCHA_KEY}>
+      <Container>
+        <Header />
+        <NewsletterBanner />
+        <Footer />
+      </Container>
+    </GoogleReCaptchaProvider>
   );
 };

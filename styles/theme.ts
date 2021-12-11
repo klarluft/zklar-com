@@ -1,3 +1,4 @@
+import { lighten } from "polished";
 import { DefaultTheme } from "styled-components";
 
 export const theme: DefaultTheme = {
@@ -8,6 +9,7 @@ export const theme: DefaultTheme = {
     accentDark: "#1776ba",
     placeholder: "#9F9F9F",
     successGreen: "#00ba00",
+    lightBorder: lighten(0.9, "#000"),
   },
   size: {
     pageMaxWidthPx: 1200,

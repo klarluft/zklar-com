@@ -7,16 +7,17 @@ import {
 import React from "react";
 import styled from "styled-components";
 import { mediaTabletPortrait } from "../../styles/media-queries";
+import Link from "next/link";
+import {
+  PRIVACY_POLICY_LINK,
+  TERMS_OF_SERVICE_LINK,
+} from "../../utilities/configuration";
 
 const decodeBase64 = (input: string) => Buffer.from(input, "base64").toString();
 
 const parentCompanyUrl = "aHR0cHM6Ly9rbGFybHVmdC5jb20=";
 const parentCompanyName = "S2xhcmx1ZnQ=";
 const email = "Y29udGFjdEB6a2xhci5jb20=";
-const addressLine1 = "WktsYXIgKEtsYXJsdWZ0KQ==";
-const addressLine2 = "R2FsdmFuaXN0cmFhdCA3MDc=";
-const addressLine3 = "MzAyOUFELCBSb3R0ZXJkYW0=";
-const addressLine4 = "VGhlIE5ldGhlcmxhbmRz";
 
 const Icons = styled.div`
   display: flex;
@@ -34,26 +35,25 @@ const Icons = styled.div`
   @media ${mediaTabletPortrait} {
     order: 2;
     margin-left: auto;
-    margin-right: 56px;
+    margin-right: 48px;
     min-height: unset;
   }
 `;
-const AddressLine = styled.div``;
-const Address = styled.div`
+const LinksLine = styled.a`
+  line-height: 1;
+  :hover {
+    text-decoration: underline;
+  }
+`;
+const Links = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  gap: 24px;
   font-size: 14px;
   color: white;
   line-height: 1.2;
   text-align: center;
   height: 120px;
-
-  > ${AddressLine}:first-child {
-    font-weight: 700;
-    margin-bottom: 8px;
-    height: unset;
-  }
 
   @media ${mediaTabletPortrait} {
     order: 3;
@@ -121,12 +121,14 @@ export const Footer = () => (
           <FontAwesomeIcon icon={faGithub} />
         </a>
       </Icons>
-      <Address>
-        <AddressLine>{decodeBase64(addressLine1)}</AddressLine>
-        <AddressLine>{decodeBase64(addressLine2)}</AddressLine>
-        <AddressLine>{decodeBase64(addressLine3)}</AddressLine>
-        <AddressLine>{decodeBase64(addressLine4)}</AddressLine>
-      </Address>
+      <Links>
+        <Link href={TERMS_OF_SERVICE_LINK} passHref={true}>
+          <LinksLine>Terms of Service</LinksLine>
+        </Link>
+        <Link href={PRIVACY_POLICY_LINK} passHref={true}>
+          <LinksLine>Privacy Policy</LinksLine>
+        </Link>
+      </Links>
       <MadeBy>
         <MadeByLine>
           Made with ❤️ by{" "}

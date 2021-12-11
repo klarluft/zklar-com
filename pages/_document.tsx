@@ -78,7 +78,7 @@ export default class MyDocument extends Document {
           {/* General info */}
           <meta
             name="title"
-            content="ZKlar - Private, fast and cheap Ethereum transactions"
+            content="zKlar - Private, fast and cheap Ethereum transactions"
           />
           <meta
             name="description"
@@ -90,7 +90,7 @@ export default class MyDocument extends Document {
           <meta property="og:url" content="https://zklar.com/" />
           <meta
             property="og:title"
-            content="ZKlar - Private, fast and cheap Ethereum transactions"
+            content="zKlar - Private, fast and cheap Ethereum transactions"
           />
           <meta
             property="og:description"
@@ -106,7 +106,7 @@ export default class MyDocument extends Document {
           <meta property="twitter:url" content="https://zklar.com/" />
           <meta
             property="twitter:title"
-            content="ZKlar - Private, fast and cheap Ethereum transactions"
+            content="zKlar - Private, fast and cheap Ethereum transactions"
           />
           <meta
             property="twitter:description"
@@ -115,7 +115,7 @@ export default class MyDocument extends Document {
           <meta
             property="twitter:image"
             content="https://zklar.com/share-image.png"
-          ></meta>
+          />
         </Head>
         <body>
           <Main />

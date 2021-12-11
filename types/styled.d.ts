@@ -9,6 +9,7 @@ declare module "styled-components" {
       accentDark: string;
       placeholder: string;
       successGreen: string;
+      lightBorder: string;
     };
     size: {
       pageMaxWidthPx: number;
