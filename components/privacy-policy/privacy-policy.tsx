@@ -1,4 +1,4 @@
-import React, { VFC } from "react";
+import React from "react";
 import {
   APP_NAME,
   COMPANY_NAME,
