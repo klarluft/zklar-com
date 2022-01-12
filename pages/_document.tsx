@@ -6,7 +6,13 @@ import Document, {
   NextScript,
 } from "next/document";
 import { ServerStyleSheet } from "styled-components";
-import { GA_ANALYTICS_MEASUREMENT_ID } from "../utilities/configuration";
+import {
+  APP_DOMAIN,
+  APP_NAME,
+  GA_ANALYTICS_MEASUREMENT_ID,
+  MAIN_SUB_TITLE,
+  MAIN_TITLE,
+} from "../utilities/configuration";
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -101,45 +107,30 @@ export default class MyDocument extends Document {
           />
 
           {/* General info */}
-          <meta
-            name="title"
-            content="zKlar - Private, fast and cheap Ethereum transactions"
-          />
-          <meta
-            name="description"
-            content="Secure blockchain payment technology powered by zero-knowledge proofs"
-          />
+          <meta name="title" content={`${APP_NAME} - ${MAIN_TITLE}`} />
+          <meta name="description" content={MAIN_SUB_TITLE} />
 
           {/* Open Graph / Facebook */}
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://zklar.com/" />
-          <meta
-            property="og:title"
-            content="zKlar - Private, fast and cheap Ethereum transactions"
-          />
-          <meta
-            property="og:description"
-            content="Secure blockchain payment technology powered by zero-knowledge proofs"
-          />
+          <meta property="og:url" content={`https://${APP_DOMAIN}`} />
+          <meta property="og:title" content={`${APP_NAME} - ${MAIN_TITLE}`} />
+          <meta property="og:description" content={MAIN_SUB_TITLE} />
           <meta
             property="og:image"
-            content="https://zklar.com/share-image.png"
+            content={`https://${APP_DOMAIN}/share-image.png`}
           />
 
           {/* Twitter */}
           <meta property="twitter:card" content="summary_large_image" />
-          <meta property="twitter:url" content="https://zklar.com/" />
+          <meta property="twitter:url" content={`https://${APP_DOMAIN}`} />
           <meta
             property="twitter:title"
-            content="zKlar - Private, fast and cheap Ethereum transactions"
+            content={`${APP_NAME} - ${MAIN_TITLE}`}
           />
-          <meta
-            property="twitter:description"
-            content="Secure blockchain payment technology powered by zero-knowledge proofs"
-          />
+          <meta property="twitter:description" content={MAIN_SUB_TITLE} />
           <meta
             property="twitter:image"
-            content="https://zklar.com/share-image.png"
+            content={`https://${APP_DOMAIN}/share-image.png`}
           />
         </Head>
         <body>

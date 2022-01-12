@@ -6,7 +6,11 @@ import { ThemeProvider } from "styled-components";
 import { CookieBanner } from "../components/cookie-banner";
 import { GlobalStyle } from "../styles/global-style";
 import { theme } from "../styles/theme";
-import { GA_ANALYTICS_MEASUREMENT_ID } from "../utilities/configuration";
+import {
+  APP_NAME,
+  GA_ANALYTICS_MEASUREMENT_ID,
+  MAIN_TITLE,
+} from "../utilities/configuration";
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -33,7 +37,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={theme}>
       <>
         <Head>
-          <title>zKlar - Private, fast and cheap Ethereum transactions</title>
+          <title>
+            {APP_NAME} - {MAIN_TITLE}
+          </title>
         </Head>
         <GlobalStyle />
         <Component {...pageProps} />
